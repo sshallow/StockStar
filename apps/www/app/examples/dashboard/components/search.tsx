@@ -13,7 +13,7 @@ export function Search({ onChange }: SearchProps) {
         placeholder="股票代码..."
         className="md:w-[100px] lg:w-[250px]"
         onChange={onChange}
-      />
+    />
     </div>
   )
 }

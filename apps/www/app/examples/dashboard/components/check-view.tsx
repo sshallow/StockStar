@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { CheckIcon, SunIcon } from "@radix-ui/react-icons";
+import * as React from "react";
 
 
 
@@ -24,9 +24,10 @@ interface DataTableFacetedFilterProps {
 const options = [
   { value: "hl_up", label: "涨停", icon: {} },
   { value: "hl_low", label: "跌停", icon: {} },
-  { value: "hl_zero", label: "平盘", icon: {} },
-  { value: "hl_newHigh", label: "新高", icon: {} },
-  { value: "hl_newLow", label: "新低", icon: {} },
+  // { value: "hl_zero", label: "平盘", icon: {} },
+  { value: "hl_newHigh", label: "60日新高", icon: {} },
+  { value: "hl_newLow", label: "60日新低", icon: {} },
+  { value: "hl_newStock", label: "新股", icon: {} },
 ]
 
 export function CheckView({
@@ -59,16 +60,16 @@ export function CheckView({
         <Button
           variant="outline"
           size="sm"
-          className="text-sm border-dashed h-9"
+          className="h-9 border-dashed text-sm"
         >
-          <SunIcon className="w-4 h-4 mr-2" />
+          <SunIcon className="mr-2 h-4 w-4" />
           {title}
           {selectedValues.size > 0 && (
             <>
-              <Separator orientation="vertical" className="h-4 mx-2" />
+              <Separator orientation="vertical" className="mx-2 h-4" />
               <Badge
                 variant="secondary"
-                className="px-1 font-normal rounded-sm lg:hidden"
+                className="rounded-sm px-1 font-normal lg:hidden"
               >
                 {selectedValues.size}
               </Badge>
@@ -76,7 +77,7 @@ export function CheckView({
                 {selectedValues.size > 2 ? (
                   <Badge
                     variant="secondary"
-                    className="px-1 font-normal rounded-sm"
+                    className="rounded-sm px-1 font-normal"
                   >
                     {selectedValues.size} selected
                   </Badge>
@@ -87,7 +88,7 @@ export function CheckView({
                       <Badge
                         variant="secondary"
                         key={option.value}
-                        className="px-1 font-normal rounded-sm"
+                        className="rounded-sm px-1 font-normal"
                       >
                         {option.label}
                       </Badge>

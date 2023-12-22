@@ -11,6 +11,7 @@ import {
 } from "@/components/page-header"
 import { buttonVariants } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
+import { useTheme } from "next-themes"
 
 export const metadata: Metadata = {
   title: "Examples",
@@ -22,6 +23,8 @@ interface ExamplesLayoutProps {
 }
 
 export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
+  const { setTheme } = useTheme()
+  setTheme("dark")
   return (
     <>
       <div className="container relative">

@@ -27,16 +27,19 @@ interface PresetSelectorProps extends PopoverProps {
   title?: string
   presets: Preset[]
   onPresetSelect?: (selectedPreset: Factor) => void // 添加这一行
+  defaultFactor: Factor
 }
 
 export function PresetSelector({
   title,
   presets,
   onPresetSelect,
+  defaultFactor, // 从props接收一个默认预设ID
   ...props
 }: PresetSelectorProps) {
   const [open, setOpen] = React.useState(false)
-  const [selectedPreset, setSelectedPreset] = React.useState<Factor>()
+  const [selectedPreset, setSelectedPreset] =
+    React.useState<Factor>(defaultFactor)
   const router = useRouter()
   // Flatten all children into a single array
   const allChildren = factors.reduce(
@@ -54,17 +57,17 @@ export function PresetSelector({
           aria-expanded={open}
           className="flex-1 justify-between md:max-w-[200px] lg:max-w-[250px]"
         >
-          <div className="flex flex-1 min-w-0">
+          <div className="flex min-w-0 flex-1">
             <span className="pr-2 opacity-50">{title}</span>
             <span className="truncate">
               {selectedPreset ? selectedPreset.factorName : "选择指标..."}
             </span>
           </div>
 
-          <CaretSortIcon className="w-4 h-4 ml-2 opacity-50 shrink-0" />
+          <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[250px] p-0 max-h-[400px] overflow-y-auto">
+      <PopoverContent className="max-h-[400px] w-[250px] overflow-y-auto p-0">
         <Command>
           <CommandInput placeholder="Search presets..." />
           <CommandEmpty>No presets found.</CommandEmpty>
@@ -73,6 +76,7 @@ export function PresetSelector({
               <CommandItem
                 key={subFactor.factorId}
                 onSelect={() => {
+                  console.log("selectedPreset:", subFactor)
                   setSelectedPreset(subFactor)
                   setOpen(false)
                   onPresetSelect?.(subFactor) // 调用回调函数

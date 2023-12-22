@@ -37,7 +37,7 @@ export function TooltipCard({
   return (
     <Card className="pb-3">
       <CardHeader className="flex flex-col  space-y-0 p-3">
-        <CardTitle className="flex flex-row items-end justify-between text-base font-black gap-4 ">
+        <CardTitle className="flex flex-row items-end justify-between gap-4 text-base font-black ">
           {name}
           {/* <span className="ml-2 text-base text-muted-foreground">{code}</span> */}
           <div
@@ -56,14 +56,14 @@ export function TooltipCard({
 
         <span className="text-xs text-muted-foreground">{code}</span>
       </CardHeader>
-      <CardContent className="px-3 pb-1 flex justify-between text-sm ">
+      <CardContent className="flex justify-between px-3 pb-1 text-sm ">
         <div className="">{firstName}</div>
         <span className="ml-2 text-muted-foreground">
           {firstValue}
           {firstUnit}
         </span>
       </CardContent>
-      <CardContent className="px-3 pb-1 flex justify-between text-sm">
+      <CardContent className="flex justify-between px-3 pb-1 text-sm">
         <div className="">{secondName}</div>
         <span className="ml-2 text-muted-foreground">
           {secondValue}
@@ -71,7 +71,7 @@ export function TooltipCard({
         </span>
       </CardContent>
       {thirdName && thirdValue && (
-        <CardContent className="px-3 pb-1 flex justify-between text-sm">
+        <CardContent className="flex justify-between px-3 pb-1 text-sm">
           <div className="">{thirdName}</div>
           <span className="ml-2 text-muted-foreground">
             {thirdValue}
